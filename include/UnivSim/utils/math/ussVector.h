@@ -40,7 +40,7 @@ struct ussVector {
     ussVector operator/(const ussVector &v2);
     ussVector operator/(double scalar);
     ussVector operator=(const ussVector &v2);
-    bool operator==(const ussVector &v2);
+    bool operator== (const ussVector &v2) const;
 
     bool isEqual(const ussVector &v2);
     double getLength();

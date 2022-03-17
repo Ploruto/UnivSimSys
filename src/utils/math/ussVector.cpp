@@ -13,7 +13,7 @@ double ussVector::getZ() const{
     return this->z;
 }
 
-double ussVector::getY()const {
+double ussVector::getY() const {
     return this->y;
 }
 
@@ -79,6 +79,6 @@ ussVector ussVector::operator=(const ussVector &v2){
     this->z = v2.z;
     return *this;
 }
-bool operator==(const ussVector &v2){
+bool ussVector::operator== (const ussVector &v2) const{
     return (this->x == v2.getX()) && (this->y == v2.getY()) && (this->z == v2.getZ());
 }
