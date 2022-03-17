@@ -4,11 +4,10 @@ cmake_minimum_required(VERSION 3.0)
 project (SimUniv)
 
 # Create a sources variable with a link to all cpp files to compile
-file(GLOB SOURCES true src/UnivSim.cpp src/utils/math/ussVector.cpp)
+file(GLOB SOURCES true utils/math/ussVectorTest.cpp)
+
 # Add an executable with the above sources
-add_library(SimUnivLib ${SOURCES})
-
-
+add_executable(SimUnivTests ${SOURCES})
 
 
 #google tests
@@ -22,21 +21,9 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-#end google tests
-
-
-
-add_subdirectory(test)
-
+#
 
 target_link_libraries(
+  SimUnivTests
   SimUnivLib
-  gtest_main
-)
-
-# Set the directories that should be included in the build command for this target
-# when running g++ these will be included as -I/directory/path/
-target_include_directories(SimUnivLib
-    PUBLIC
-            ${PROJECT_SOURCE_DIR}/include
 )

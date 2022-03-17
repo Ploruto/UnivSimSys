@@ -5,15 +5,15 @@
 
 ussVector::ussVector(double x, double y, double z): x(x), y(y), z(z){}
 
-double ussVector::getX(){
+double ussVector::getX() const {
     return this->x;
 }
 
-double ussVector::getZ(){
+double ussVector::getZ() const{
     return this->z;
 }
 
-double ussVector::getY(){
+double ussVector::getY()const {
     return this->y;
 }
 
@@ -61,7 +61,24 @@ ussVector ussVector::operator+(const ussVector &v2){
     return ussVector(this->x + v2.x, this->y + v2.y, this->z + v2.z);
 }
 
+ussVector ussVector::operator-(const ussVector &v2){
+    return ussVector(this->x - v2.x, this->y - v2.y, this->z - v2.z);
+}
 
+ussVector ussVector::operator*(double scalar){
+    return ussVector(this->x * scalar, this->y * scalar, this->z * scalar);
+}
 
+ussVector ussVector::operator/(double scalar){
+    return ussVector(this->x / scalar, this->y / scalar, this->z / scalar);
+}
 
-
+ussVector ussVector::operator=(const ussVector &v2){
+    this->x = v2.x;
+    this->y = v2.y;
+    this->z = v2.z;
+    return *this;
+}
+bool operator==(const ussVector &v2){
+    return (this->x == v2.getX()) && (this->y == v2.getY()) && (this->z == v2.getZ());
+}

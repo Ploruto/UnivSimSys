@@ -25,10 +25,9 @@ struct ussVector {
     void setY(double y);
     void setZ(double z);
 
-    void test();
-    double getX();
-    double getY();
-    double getZ();
+    double getX() const;
+    double getY() const;
+    double getZ() const;
 
     static ussVector getBasisVector(DIRECTION direction);
 
@@ -40,7 +39,8 @@ struct ussVector {
     ussVector operator*(double scalar);
     ussVector operator/(const ussVector &v2);
     ussVector operator/(double scalar);
-    void operator=(ussVector &v2);
+    ussVector operator=(const ussVector &v2);
+    bool operator==(const ussVector &v2);
 
     bool isEqual(const ussVector &v2);
     double getLength();
