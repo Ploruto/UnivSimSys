@@ -19,6 +19,7 @@ struct UssVector {
         double x, y, z;
     public:
     UssVector(double x, double y, double z);
+    UssVector();
 
     void setVector(double x, double y, double z);
     void setX(double x);
@@ -48,6 +49,9 @@ struct UssVector {
     bool isEqual(const UssVector &v2) const;
     double getMagnitute() const;
     bool isEqualDirection(const UssVector &v2) const;
+    double getDistance(const UssVector &v2) const;
+
+    static double getDistance(const UssVector &v1, const UssVector &v2);
 
 };
 

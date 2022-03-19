@@ -3,7 +3,6 @@
 
 #include <UnivSim/utils/math/UssVector.h>
 
-namespace entity {
 class Entity{
     private:
         UssVector m_perceptionVector;
@@ -14,18 +13,17 @@ class Entity{
         Entity();
         Entity(UssVector &position);
         void receive_event();
-        void set_perception_vector(UssVector perceptionVector);
-        void set_movement_vector(UssVector movementVector);
-        void set_position(UssVector position);
-        UssVector get_perception_vector();
-        UssVector get_movement_vector();
-        UssVector get_position();
+        void setPerceptionVector(UssVector &perceptionVector);
+        void setMovementVector(UssVector &movementVector);
+        void setPosition(UssVector &position);
+        UssVector getPerceptionVector() const;
+        UssVector getMovementVector() const;
+        UssVector getPosition() const;
 
     private:
         void internal_example();
 
 };
-}
 
 
 #endif

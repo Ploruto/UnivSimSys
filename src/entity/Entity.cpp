@@ -2,14 +2,14 @@
 
 
 Entity::Entity() {
-  m_perceptionVector = UssVector(0, 0, 0);
-  m_movementVector = UssVector(0, 0, 0);
-  m_position = UssVector(0, 0, 0);
+  m_perceptionVector = UssVector();
+  m_movementVector = UssVector();
+  m_position = UssVector();
 }
 
 Entity::Entity(UssVector &position) {
-  m_perceptionVector = UssVector(0, 0, 0);
-  m_movementVector = UssVector(0, 0, 0);
+  m_perceptionVector = UssVector();
+  m_movementVector = UssVector();
   m_position = position;
 }
 
@@ -17,27 +17,27 @@ void Entity::receive_event() {
   // some code
 }
 
-void Entity::set_perception_vector(UssVector &perceptionVector) {
+void Entity::setPerceptionVector(UssVector &perceptionVector) {
   m_perceptionVector = perceptionVector;
 }
 
-void Entity::set_movement_vector(UssVector &movementVector) {
+void Entity::setMovementVector(UssVector &movementVector) {
   m_movementVector = movementVector;
 }
 
-void Entity::set_position(UssVector &position) {
+void Entity::setPosition(UssVector &position) {
   m_position = position;
 }
 
-UssVector Entity::get_perception_vector() {
+UssVector Entity::getPerceptionVector() const {
   return m_perceptionVector;
 }
 
-UssVector Entity::get_movement_vector() {
+UssVector Entity::getMovementVector() const{
   return m_movementVector;
 }
 
-UssVector Entity::get_position() {
+UssVector Entity::getPosition() const{
   return m_position;
 }
 

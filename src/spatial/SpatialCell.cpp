@@ -2,6 +2,7 @@
 #include <UnivSim/entity/Entity.h>
 #include <UnivSim/utils/math/UssVector.h>
 #include <vector>
+#include <algorithm>
 
 SpatialCell::SpatialCell(long int index) : m_index(index) {}
 
@@ -10,7 +11,7 @@ void SpatialCell::addEntity(Entity* entity) {
     m_entities.push_back(entity);
 }
 
-void SpatialCell::removeEntity(Entity* entity) {
+void SpatialCell::removeEntity(Entity* entity){
     m_entities.erase(std::remove(m_entities.begin(), m_entities.end(), entity), m_entities.end());
 }
 
@@ -37,4 +38,8 @@ Entity* SpatialCell::getEntitiesInRadius(Entity* entity, double radius) {
         }
     }
     return result;
+}
+
+Entity *SpatialCell::getEntityAtIndex(long int index) {
+    return m_entities.size() > 0 ? m_entities.at(index) : nullptr;
 }

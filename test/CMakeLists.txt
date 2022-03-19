@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.0)
 project (SimUniv)
 
 # Create a sources variable with a link to all cpp files to compile
-file(GLOB SOURCES true utils/math/UssVectorTest.cpp)
+file(GLOB SOURCES true utils/math/UssVectorTest.cpp spatial/SpatialCellTest.cpp)
 
 # Add an executable with the above sources
 add_executable(SimUnivTests ${SOURCES})

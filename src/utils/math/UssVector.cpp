@@ -4,6 +4,7 @@
 
 
 UssVector::UssVector(double x, double y, double z): x(x), y(y), z(z){}
+UssVector::UssVector(): x(0.0), y(0.0), z(0.0){}
 
 double UssVector::getX() const {
     return this->x;
@@ -97,5 +98,13 @@ bool UssVector::isEqualDirection(const UssVector &v) const{
 
 double UssVector::getMagnitute() const{
     return sqrt(pow(this->x, 2) + pow(this->y, 2) + pow(this->z, 2));
+}
+
+double UssVector::getDistance(const UssVector &v2) const{
+    return sqrt(pow(this->x - v2.getX(), 2) + pow(this->y - v2.getY(), 2) + pow(this->z - v2.getZ(), 2));
+}
+
+double UssVector::getDistance(const UssVector &v1, const UssVector &v2){
+    return sqrt(pow(v1.getX() - v2.getX(), 2) + pow(v1.getY() - v2.getY(), 2) + pow(v1.getZ() - v2.getZ(), 2));
 }
 

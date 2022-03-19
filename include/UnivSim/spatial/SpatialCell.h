@@ -1,6 +1,6 @@
 #ifndef USimS_spatialCell
 #define USimS_spatialCell
-#include <UnivSim/entity/entity.h>
+#include <UnivSim/entity/Entity.h>
 #include <vector>
 
 struct SpatialCell
@@ -16,6 +16,7 @@ struct SpatialCell
     void removeEntity(Entity* entity);
     void removeAllEntities();
     std::vector<Entity*> getEntities();
+    Entity* getEntityAtIndex(long int index);
     long int getIndex();
 
     Entity* getEntitiesInRadius(Entity* entity, double radius);
