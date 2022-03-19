@@ -7,10 +7,9 @@ Entity::Entity() {
   m_position = UssVector();
 }
 
-Entity::Entity(UssVector &position) {
+Entity::Entity(UssVector &position): m_position(position) {
   m_perceptionVector = UssVector();
   m_movementVector = UssVector();
-  m_position = position;
 }
 
 void Entity::receive_event() {

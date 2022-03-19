@@ -9,7 +9,6 @@ TEST(SpatialCellTest, SpatialCellOperations1){
     Entity* entity = new Entity();
     cell.addEntity(entity);
 
-    std::cout << "1" << std::endl;
 
     
     EXPECT_EQ(cell.getEntities().size(), 1);

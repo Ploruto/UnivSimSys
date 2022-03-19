@@ -5,6 +5,7 @@
 #include <algorithm>
 
 SpatialCell::SpatialCell(long int index) : m_index(index) {}
+SpatialCell::SpatialCell() : m_index(-1) {}
 
 
 void SpatialCell::addEntity(Entity* entity) {
@@ -21,6 +22,10 @@ void SpatialCell::removeAllEntities() {
 
 std::vector<Entity*> SpatialCell::getEntities() {
     return m_entities;
+}
+
+void SpatialCell::setIndex(long int index) {
+    this->m_index = index;
 }
 
 long int SpatialCell::getIndex() {
