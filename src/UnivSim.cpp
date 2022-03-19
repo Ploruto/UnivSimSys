@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include <UnivSim/utils/math/ussVector.h>
+#include <UnivSim/utils/math/UssVector.h>
 #include <gtest/gtest.h>
 
 
