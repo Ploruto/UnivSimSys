@@ -2,6 +2,7 @@
 #define USimS_entity
 
 #include <UnivSim/utils/math/UssVector.h>
+#include <UnivSim/event/Event.h>
 
 class Entity{
     private:
@@ -13,7 +14,7 @@ class Entity{
         Entity();
         Entity(UssVector &position);
 
-        void receive_event();
+        virtual void receive_event(Event &e); //accept any event drived from Event class
         void setPerceptionVector(UssVector &perceptionVector);
         void setMovementVector(UssVector &movementVector);
         void setPosition(UssVector &position);

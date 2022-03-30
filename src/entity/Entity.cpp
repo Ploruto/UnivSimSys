@@ -1,4 +1,5 @@
 #include <UnivSim/entity/Entity.h>
+#include <UnivSim/event/Event.h>
 
 
 Entity::Entity() {
@@ -12,7 +13,7 @@ Entity::Entity(UssVector &position): m_position(position) {
   m_movementVector = UssVector();
 }
 
-void Entity::receive_event() {
+void Entity::receive_event(Event &e) {
   // some code
 }
 

@@ -25,17 +25,6 @@ int main(int argc, char* argv[]){
     //return RUN_ALL_TESTS();
 
 
-    SpatialGrid grid(10);
-    UssVector v1(0,0,0);
-    TestEntity testEntity(v1);
-    Entity entity(v1);
-
-    grid.addEntity(&testEntity);
-    grid.addEntity(&entity);
-
-    for (Entity* e : grid.getCellAtIndex(0L).getEntities()) {
-        e->receive_event();
-    }
 
 
 }

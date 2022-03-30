@@ -5,13 +5,13 @@
 template<class TEvent>
 class TimedEvent : public Event {
     public:
-        TimedEvent(double tick);
+        TimedEvent(double tick, TEvent &event): m_tick(tick), m_event(event) {};
         virtual ~TimedEvent();
         
-        double getTick() const;
-        void setTick(double tick);
+        double getTick() const { return m_tick; }
+        void setTick(double tick){ m_tick = tick; }
 
-        TEvent getEvent() const;
+        TEvent getEvent() const { return m_event; }
         
     private:
         long long m_tick;
