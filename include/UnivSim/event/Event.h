@@ -12,6 +12,8 @@ class Event {
         ~Event();
 
         void emit_event();
+        void add_entity(Entity* entity);
+        std::vector<Entity*> getReceivers() const;
 
     protected:
         std::vector<Entity*> m_receivers;

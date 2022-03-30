@@ -6,3 +6,11 @@ void Event::emit_event() {
         e->receive_event(*this);
     }
 }
+
+void Event::add_entity(Entity* entity) {
+    m_receivers.push_back(entity);
+}
+
+std::vector<Entity*> Event::getReceivers() const {
+    return m_receivers;
+}
