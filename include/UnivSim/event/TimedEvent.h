@@ -4,11 +4,11 @@
 
 class TimedEvent : public Event {
     public:
-        TimedEvent(double tick, Event* event);
-        virtual ~TimedEvent();
+        TimedEvent(long long tick, Event* event);
+        ~TimedEvent();
         
         long long getTick() const;
-        void setTick(double tick);
+        void setTick(long long tick);
         Event* getEvent() const;
         
     private:

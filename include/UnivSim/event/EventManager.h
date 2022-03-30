@@ -2,7 +2,7 @@
 #define USimS_eventManager
 
 #include <list>
-#include <UnivSim/event/TimeEvent.h>
+#include <UnivSim/event/TimedEvent.h>
 #include <UnivSim/event/Event.h>
 
 class EventManager {
@@ -10,14 +10,15 @@ class EventManager {
         EventManager();
         ~EventManager();
 
-        void addTimedEvent(Event* event, long long tick); //O(n)
-        void removeTimedEvent(Event* event); //O(n)
+        void addTimedEvent(TimedEvent* event, long long tick); //O(n)
+        void removeTimedEvent(TimedEvent* event); //O(n)
         void removeAllTimedEvents();
         void processTimedEvents(long long tick);
 
-    private:
-        std::list<TimedEvent> timedEventsList; //sorted by tick in ascending order
-        
+
+    public:
+        std::list<TimedEvent*> timedEventsList; //sorted by tick in ascending order
+
 
 
         

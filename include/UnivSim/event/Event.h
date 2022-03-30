@@ -9,12 +9,11 @@ class Entity;
 class Event {
     public:
         Event(){};
-        virtual ~Event() = 0;
+        ~Event();
 
         void emit_event();
 
     protected:
-    //ToDo: fix this compiler error
         std::vector<Entity*> m_receivers;
         
 };

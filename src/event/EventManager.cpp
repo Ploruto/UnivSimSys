@@ -9,43 +9,41 @@ EventManager::~EventManager() {
     removeAllTimedEvents();
 }
 
-EventManager::removeTimedEvent(Event* event) {
+void EventManager::removeTimedEvent(TimedEvent* event) {
     for (TimedEvent* e : timedEventsList) {
         if (e->getEvent() == event) {
             timedEventsList.remove(e);
-            delete e;
+            //delete e;
             return;
         }
     }
 }
 
-EventManager::removeAllTimedEvents() {
+void EventManager::removeAllTimedEvents() {
     for (TimedEvent* e : timedEventsList) {
-        delete e;
+        //delete e;
     }
     timedEventsList.clear();
 }
 
-EventManager::processTimedEvents(long long tick) {
+void EventManager::processTimedEvents(long long tick) {
     while (!timedEventsList.empty() && timedEventsList.front()->getTick() <= tick) {
         TimedEvent* e = timedEventsList.front();
         timedEventsList.pop_front();
         e->getEvent()->emit_event();
-        delete e;
+        //delete e;
     }
 }
 
-void EventManager::addTimedEvent(Event* event, long long tick) {
+void EventManager::addTimedEvent(TimedEvent* event, long long tick) {
     TimedEvent* e = new TimedEvent(tick, event);
     if (timedEventsList.empty()) {
         timedEventsList.push_back(e);
         return;
     }
-    for (TimedEvent* e : timedEventsList) {
-        if (e->getTick() > tick) {
-            timedEventsList.insert(e, e);
-            return;
-        }
+    std::list<TimedEvent*>::iterator it = timedEventsList.begin();
+    while (it != timedEventsList.end() && (*it)->getTick() < tick) {
+        it++;
     }
-    timedEventsList.push_back(e);
+    timedEventsList.insert(it, e);
 }

@@ -9,6 +9,8 @@ src/UnivSim.cpp src/utils/math/UssVector.cpp
 src/entity/Entity.cpp src/spatial/SpatialGrid.cpp
 src/spatial/SpatialCell.cpp
 src/event/Event.cpp src/event/EventManager.cpp
+src/event/TimedEvent.cpp
+
 
 
 )

@@ -1,7 +1,7 @@
-#include <UnivSim/event/TimeEvent.h>
+#include <UnivSim/event/TimedEvent.h>
 #include <UnivSim/event/Event.h>
 
-TimedEvent::TimedEvent(double tick, Event* event): m_tick(tick), m_event(event) {}
+TimedEvent::TimedEvent(long long tick, Event* event): m_tick(tick), m_event(event) {}
 
 long long TimedEvent::getTick() const { return m_tick; }
 

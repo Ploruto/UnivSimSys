@@ -25,6 +25,6 @@ TEST(SpatialGridTest, SpatialGridOperations2){
 
     grid.addEntity(e2);
     grid.addEntity(e3);
-    std::vector<Entity*> vE = grid.getEntitiesInRadius(entity, 3);
+    //std::vector<Entity*> vE = grid.getEntitiesInRadius(entity, 3);
 
 }
