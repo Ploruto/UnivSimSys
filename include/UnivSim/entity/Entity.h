@@ -4,6 +4,8 @@
 #include <UnivSim/utils/math/UssVector.h>
 #include <UnivSim/event/Event.h>
 
+class Event;
+
 class Entity{
     private:
         UssVector m_perceptionVector;

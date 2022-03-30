@@ -4,6 +4,8 @@
 #include <UnivSim/entity/Entity.h>
 #include <vector>
 
+class Entity;
+
 class Event {
     public:
         Event(){};

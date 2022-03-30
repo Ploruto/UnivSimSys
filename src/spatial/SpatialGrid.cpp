@@ -65,7 +65,6 @@ void SpatialGrid::removeAllEntities() {
 }
 //TODO: Implement this
 std::vector<Entity*> SpatialGrid::getEntitiesInRadius(Entity* entity, double radius) {
-    
 }
 //TODO: Implement this properly
 std::vector<Entity*> SpatialGrid::getEntitiesInRadius(double x, double y, double radius) {
