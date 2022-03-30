@@ -12,7 +12,6 @@ TEST(SpatialCellTest, SpatialCellOperations1){
 
     
     EXPECT_EQ(cell.getEntities().size(), 1);
-    EXPECT_EQ(cell.getEntityAtIndex(0), entity);
     EXPECT_EQ(cell.getIndex(), 1);
 }
 
@@ -24,7 +23,6 @@ TEST(SpatialCellTest, SpatialCellOperations2){
     cell.removeEntity(entity);
 
     EXPECT_EQ(cell.getEntities().size(), 0);
-    EXPECT_EQ(cell.getEntityAtIndex(0), nullptr);
     EXPECT_EQ(cell.getIndex(), 1);
 }
 

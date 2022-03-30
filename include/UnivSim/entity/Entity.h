@@ -12,6 +12,7 @@ class Entity{
     public:
         Entity();
         Entity(UssVector &position);
+
         void receive_event();
         void setPerceptionVector(UssVector &perceptionVector);
         void setMovementVector(UssVector &movementVector);

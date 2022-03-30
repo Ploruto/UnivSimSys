@@ -26,8 +26,8 @@ struct SpatialGrid
         std::vector<Entity*> getEntitiesInRadius(Entity* entity, double radius);
         std::vector<Entity*> getEntitiesInRadius(double x, double y, double radius);
 
-        SpatialCell* getCellAtIndex(long int index);
-        SpatialCell* getCellAtCoord(double x, double y);
+        SpatialCell getCellAtIndex(long int index);
+        SpatialCell getCellAtCoord(double x, double y);
 
         long int getIndexAtCoord(double x, double y);
 

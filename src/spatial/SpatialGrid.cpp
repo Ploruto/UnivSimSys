@@ -5,6 +5,7 @@
 #include <vector>
 #include <limits>
 
+// Constructor
 SpatialGrid::SpatialGrid(int numberOfCells) : m_numberOfCellsPerAxis(numberOfCells) {
     double maxDouble{std::numeric_limits<double>::max()};
     this->m_cells = std::vector<SpatialCell>(numberOfCells * numberOfCells);
@@ -16,7 +17,7 @@ SpatialGrid::SpatialGrid(int numberOfCells) : m_numberOfCellsPerAxis(numberOfCel
         cell.setIndex(index++);
     }
 }
-
+// Constructor
 SpatialGrid::SpatialGrid(int numberOfCells, double minCoord, double maxCoord) : m_numberOfCellsPerAxis(numberOfCells), minCoord(minCoord), maxCoord(maxCoord) {
     this->m_cells = std::vector<SpatialCell>(numberOfCells * numberOfCells);
     this->m_cellSize = (maxCoord - minCoord) / numberOfCells;
@@ -25,6 +26,11 @@ SpatialGrid::SpatialGrid(int numberOfCells, double minCoord, double maxCoord) : 
         cell.setIndex(index++);
     }
 }
+
+SpatialCell SpatialGrid::getCellAtIndex(long int index) {
+    return this->m_cells.at(index);
+}
+
 
 long int SpatialGrid::getIndexAtCoord(double x, double y) {
     long int index = 0;
@@ -47,9 +53,9 @@ void SpatialGrid::removeEntity(Entity* entity) {
     this->m_cells.at(index).removeEntity(entity);
 }
 
-SpatialCell* SpatialGrid::getCellAtCoord(double x, double y) {
+SpatialCell SpatialGrid::getCellAtCoord(double x, double y) {
     long int index = this->getIndexAtCoord(x, y);
-    return &this->m_cells.at(index);
+    return this->m_cells.at(index);
 }
 
 void SpatialGrid::removeAllEntities() {
@@ -57,24 +63,11 @@ void SpatialGrid::removeAllEntities() {
         cell.removeAllEntities();
     }
 }
-
+//TODO: Implement this
 std::vector<Entity*> SpatialGrid::getEntitiesInRadius(Entity* entity, double radius) {
-    std::vector<Entity*> result;
-    long int index = this->getIndexAtCoord(entity->getPosition().getX(), entity->getPosition().getY());
-    for (int i = -1; i <= 1; i++) {
-        for (int j = -1; j <= 1; j++) {
-            if (i == 0 && j == 0) {
-                continue;
-            }
-            long int indexNeighbour = index + i + j * this->m_numberOfCellsPerAxis;
-            if (indexNeighbour >= 0 && indexNeighbour < this->m_cells.size()) {
-                result.insert(result.end(), this->m_cells.at(indexNeighbour).getEntities().begin(), this->m_cells.at(indexNeighbour).getEntities().end());
-            }
-        }
-    }
-    return result;
+    
 }
-
+//TODO: Implement this properly
 std::vector<Entity*> SpatialGrid::getEntitiesInRadius(double x, double y, double radius) {
     std::vector<Entity*> result;
     long int index = this->getIndexAtCoord(x, y);
