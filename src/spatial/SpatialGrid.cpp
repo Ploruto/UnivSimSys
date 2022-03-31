@@ -7,18 +7,18 @@
 
 // Constructor
 SpatialGrid::SpatialGrid(int numberOfCells) : m_numberOfCellsPerAxis(numberOfCells) {
-    double maxDouble{std::numeric_limits<double>::max()};
+    float maxfloat{std::numeric_limits<float>::max()};
     this->m_cells = std::vector<SpatialCell>(numberOfCells * numberOfCells);
-    this->m_cellSize = (maxDouble / numberOfCells * 2) - 2;
-    this->minCoord = -maxDouble + 1;
-    this->maxCoord = maxDouble;
+    this->m_cellSize = (maxfloat / numberOfCells * 2) - 2;
+    this->minCoord = -maxfloat + 1;
+    this->maxCoord = maxfloat;
     long int index{0};
     for(auto &cell : this->m_cells) {
         cell.setIndex(index++);
     }
 }
 // Constructor
-SpatialGrid::SpatialGrid(int numberOfCells, double minCoord, double maxCoord) : m_numberOfCellsPerAxis(numberOfCells), minCoord(minCoord), maxCoord(maxCoord) {
+SpatialGrid::SpatialGrid(int numberOfCells, float minCoord, float maxCoord) : m_numberOfCellsPerAxis(numberOfCells), minCoord(minCoord), maxCoord(maxCoord) {
     this->m_cells = std::vector<SpatialCell>(numberOfCells * numberOfCells);
     this->m_cellSize = (maxCoord - minCoord) / numberOfCells;
     long int index{0};
@@ -32,14 +32,14 @@ SpatialCell SpatialGrid::getCellAtIndex(long int index) {
 }
 
 
-long int SpatialGrid::getIndexAtCoord(double x, double y) {
+long int SpatialGrid::getIndexAtCoord(float x, float y) {
     long int index = 0;
     index = (long int) ((x - this->minCoord) / this->m_cellSize) + (long int) ((y - this->minCoord) / this->m_cellSize) * this->m_numberOfCellsPerAxis;
     return index;
 }
 
 
-bool SpatialGrid::isInGrid(double x, double y) {
+bool SpatialGrid::isInGrid(float x, float y) {
     return x >= this->minCoord && x <= this->maxCoord && y >= this->minCoord && y <= this->maxCoord;
 }
 
@@ -53,7 +53,7 @@ void SpatialGrid::removeEntity(Entity* entity) {
     this->m_cells.at(index).removeEntity(entity);
 }
 
-SpatialCell SpatialGrid::getCellAtCoord(double x, double y) {
+SpatialCell SpatialGrid::getCellAtCoord(float x, float y) {
     long int index = this->getIndexAtCoord(x, y);
     return this->m_cells.at(index);
 }
@@ -64,10 +64,10 @@ void SpatialGrid::removeAllEntities() {
     }
 }
 //TODO: Implement this
-std::vector<Entity*> SpatialGrid::getEntitiesInRadius(Entity* entity, double radius) {
+std::vector<Entity*> SpatialGrid::getEntitiesInRadius(Entity* entity, float radius) {
 }
 //TODO: Implement this properly
-std::vector<Entity*> SpatialGrid::getEntitiesInRadius(double x, double y, double radius) {
+std::vector<Entity*> SpatialGrid::getEntitiesInRadius(float x, float y, float radius) {
     std::vector<Entity*> result;
     long int index = this->getIndexAtCoord(x, y);
     for (int i = -1; i <= 1; i++) {

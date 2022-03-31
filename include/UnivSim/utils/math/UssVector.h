@@ -16,19 +16,19 @@ struct UssVector {
 
 
     private:
-        double x, y, z;
+        float x, y, z;
     public:
-    UssVector(double x, double y, double z);
+    UssVector(float x, float y, float z);
     UssVector();
 
-    void setVector(double x, double y, double z);
-    void setX(double x);
-    void setY(double y);
-    void setZ(double z);
+    void setVector(float x, float y, float z);
+    void setX(float x);
+    void setY(float y);
+    void setZ(float z);
 
-    double getX() const;
-    double getY() const;
-    double getZ() const;
+    float getX() const;
+    float getY() const;
+    float getZ() const;
 
     static UssVector getBasisVector(DIRECTION direction);
 
@@ -37,21 +37,21 @@ struct UssVector {
     UssVector operator+(const UssVector &v2) const;
     UssVector operator-(const UssVector &v2) const;
     UssVector operator*(const UssVector &v2) const;
-    UssVector operator*(double scalar) const;
+    UssVector operator*(float scalar) const;
     UssVector operator/(const UssVector &v2) const;
-    UssVector operator/(double scalar) const;
+    UssVector operator/(float scalar) const;
     UssVector operator=(const UssVector &v2);
     bool operator== (const UssVector &v2) const;
 
-    double getCrossProduct(const UssVector &v2) const;
-    double getDotProduct(const UssVector &v2) const;
+    float getCrossProduct(const UssVector &v2) const;
+    float getDotProduct(const UssVector &v2) const;
 
     bool isEqual(const UssVector &v2) const;
-    double getMagnitute() const;
+    float getMagnitute() const;
     bool isEqualDirection(const UssVector &v2) const;
-    double getDistance(const UssVector &v2) const;
+    float getDistance(const UssVector &v2) const;
 
-    static double getDistance(const UssVector &v1, const UssVector &v2);
+    static float getDistance(const UssVector &v1, const UssVector &v2);
 
 };
 

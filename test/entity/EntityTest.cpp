@@ -6,12 +6,12 @@
 //create event deriving from event class
 class TestEvent : public Event {
 public:
-    TestEvent(Entity* receiver, double number, int id) : Event(receiver), m_number(number), m_id(id) {}
+    TestEvent(Entity* receiver, float number, int id) : Event(receiver), m_number(number), m_id(id) {}
     ~TestEvent() {}
-    double getNumber() { return m_number; }
+    float getNumber() { return m_number; }
     int getId() { return m_id; }
 private:
-    double m_number;
+    float m_number;
     int m_id;
 };
 

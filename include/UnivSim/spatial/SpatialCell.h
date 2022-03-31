@@ -13,14 +13,14 @@ struct SpatialCell
     SpatialCell(long int index);
     SpatialCell();
     
-    long int getIndex(double x, double y);
+    long int getIndex(float x, float y);
 
     void addEntity(Entity* entity);
     void removeEntity(Entity* entity);
     void setIndex(long int index);
     void removeAllEntities();
     std::vector<Entity*> getEntities();
-    std::vector<Entity*> getEntitiesInRadius(Entity* entity, double radius);
+    std::vector<Entity*> getEntitiesInRadius(Entity* entity, float radius);
     long int getIndex();
 
     

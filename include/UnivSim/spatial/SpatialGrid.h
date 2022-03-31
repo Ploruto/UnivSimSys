@@ -7,29 +7,29 @@
 struct SpatialGrid
 {
     private:
-        double m_cellSize;
-        double minCoord, maxCoord;
+        float m_cellSize;
+        float minCoord, maxCoord;
         int m_numberOfCellsPerAxis;
         std::vector<SpatialCell> m_cells;
 
     public:
         SpatialGrid(int numberOfCellsPerAxis);
-        SpatialGrid(int numberOfCellsPerAxis, double minCoord, double maxCoord);
+        SpatialGrid(int numberOfCellsPerAxis, float minCoord, float maxCoord);
 
-        bool isInGrid(double x, double y);
+        bool isInGrid(float x, float y);
 
         void addEntity(Entity* entity);
 
         void removeEntity(Entity* entity);
         void removeAllEntities();
 
-        std::vector<Entity*> getEntitiesInRadius(Entity* entity, double radius);
-        std::vector<Entity*> getEntitiesInRadius(double x, double y, double radius);
+        std::vector<Entity*> getEntitiesInRadius(Entity* entity, float radius);
+        std::vector<Entity*> getEntitiesInRadius(float x, float y, float radius);
 
         SpatialCell getCellAtIndex(long int index);
-        SpatialCell getCellAtCoord(double x, double y);
+        SpatialCell getCellAtCoord(float x, float y);
 
-        long int getIndexAtCoord(double x, double y);
+        long int getIndexAtCoord(float x, float y);
 
 
 

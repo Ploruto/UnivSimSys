@@ -32,11 +32,11 @@ long int SpatialCell::getIndex() {
     return m_index;
 }
 
-std::vector<Entity*> SpatialCell::getEntitiesInRadius(Entity* entity, double radius) {
+std::vector<Entity*> SpatialCell::getEntitiesInRadius(Entity* entity, float radius) {
     std::vector<Entity*> entitiesInRadius;
     for (Entity* e : m_entities) {
         if (entity != e) {
-            double distance = UssVector::getDistance(entity->getPosition(), e->getPosition());
+            float distance = UssVector::getDistance(entity->getPosition(), e->getPosition());
             if (distance <= radius) {
                 entitiesInRadius.push_back(e);
             }

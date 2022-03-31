@@ -2,18 +2,18 @@
 #include <iostream>
 #include <math.h>
 
-UssVector::UssVector(double x, double y, double z): x(x), y(y), z(z){}
+UssVector::UssVector(float x, float y, float z): x(x), y(y), z(z){}
 UssVector::UssVector(): x(0.0), y(0.0), z(0.0){}
 
-double UssVector::getX() const {
+float UssVector::getX() const {
     return this->x;
 }
 
-double UssVector::getZ() const{
+float UssVector::getZ() const{
     return this->z;
 }
 
-double UssVector::getY() const {
+float UssVector::getY() const {
     return this->y;
 }
 
@@ -21,7 +21,7 @@ bool UssVector::isEqual(const UssVector &v2) const{
     return (this->x == v2.x) && (this->y == v2.y) && (this->z == v2.z);
 }
 
-void UssVector::setVector(double x, double y, double z){
+void UssVector::setVector(float x, float y, float z){
     this->x = x;
     this->y = y;
     this->z = z;
@@ -29,7 +29,7 @@ void UssVector::setVector(double x, double y, double z){
 }
 
 UssVector UssVector::toUnitVector() const{
-    double magnitute{sqrt(pow(this->x, 2) + pow(this->y, 2) + pow(this->z, 2))};
+    float magnitute{sqrt(pow(this->x, 2) + pow(this->y, 2) + pow(this->z, 2))};
     return UssVector(this->x / magnitute, this->y / magnitute, this->z / magnitute);
 }
 
@@ -63,11 +63,11 @@ UssVector UssVector::operator-(const UssVector &v2) const{
     return UssVector(this->x - v2.x, this->y - v2.y, this->z - v2.z);
 }
 
-UssVector UssVector::operator*(double scalar) const{
+UssVector UssVector::operator*(float scalar) const{
     return UssVector(this->x * scalar, this->y * scalar, this->z * scalar);
 }
 
-UssVector UssVector::operator/(double scalar) const{
+UssVector UssVector::operator/(float scalar) const{
     return UssVector(this->x / scalar, this->y / scalar, this->z / scalar);
 }
 
@@ -81,11 +81,11 @@ bool UssVector::operator== (const UssVector &v2) const{
     return (this->x == v2.getX()) && (this->y == v2.getY()) && (this->z == v2.getZ());
 }
 
-double UssVector::getCrossProduct(const UssVector &v) const{
+float UssVector::getCrossProduct(const UssVector &v) const{
     return (this->x * v.getY()) - (this->y * v.getX());
 }
 
-double UssVector::getDotProduct(const UssVector &v) const{
+float UssVector::getDotProduct(const UssVector &v) const{
     return (this->x * v.getX()) + (this->y * v.getY()) + (this->z * v.getZ());
 }
 
@@ -95,15 +95,15 @@ bool UssVector::isEqualDirection(const UssVector &v) const{
     return (v1.getCrossProduct(v2) == 0) && (v1.getDotProduct(v2) == 1);
 }
 
-double UssVector::getMagnitute() const{
+float UssVector::getMagnitute() const{
     return sqrt(pow(this->x, 2) + pow(this->y, 2) + pow(this->z, 2));
 }
 
-double UssVector::getDistance(const UssVector &v2) const{
+float UssVector::getDistance(const UssVector &v2) const{
     return sqrt(pow(this->x - v2.getX(), 2) + pow(this->y - v2.getY(), 2) + pow(this->z - v2.getZ(), 2));
 }
 
-double UssVector::getDistance(const UssVector &v1, const UssVector &v2){
+float UssVector::getDistance(const UssVector &v1, const UssVector &v2){
     return sqrt(pow(v1.getX() - v2.getX(), 2) + pow(v1.getY() - v2.getY(), 2) + pow(v1.getZ() - v2.getZ(), 2));
 }
 
