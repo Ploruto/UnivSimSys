@@ -18,7 +18,7 @@ class EventTest
 class NumberLover : public EventReceiver<EventTest> {
     public:
         void receive_event(const EventTest &event) override {
-            std::cout << "NumberLover received event with testShort: " << event.getTestShort() << std::endl;
+            //std::cout << "NumberLover received event with testShort: " << event.getTestShort() << std::endl;
         }
 };
 
