@@ -9,6 +9,7 @@ class Entity;
 class Event {
     public:
         Event(){};
+        Event(Entity* receiver);
         ~Event();
 
         void emit_event();

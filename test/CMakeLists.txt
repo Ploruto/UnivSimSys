@@ -8,8 +8,7 @@ file(GLOB SOURCES true utils/math/UssVectorTest.cpp
  spatial/SpatialCellTest.cpp
 spatial/SpatialGridTest.cpp
 event/EventManagerTest.cpp event/EventTest.cpp event/TimedEvent.cpp
-entity/Entity.cpp
-
+entity/Entity.cpp entity/EntityTest.cpp
   
   )
 
