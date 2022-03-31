@@ -1,21 +1,28 @@
 #include <UnivSim/entity/Entity.h>
-#include <UnivSim/event/Event.h>
+
+
+long long Entity::getNextUUID(){
+    static long long uuid{0};
+    return uuid++;
+}
 
 
 Entity::Entity() {
   m_perceptionVector = UssVector();
   m_movementVector = UssVector();
   m_position = UssVector();
+  m_uuid = getNextUUID();
 }
 
-Entity::Entity(UssVector &position): m_position(position) {
-  m_perceptionVector = UssVector();
-  m_movementVector = UssVector();
+Entity::Entity(UssVector &position, UssVector &perceptionVector, UssVector &movementVector):
+  m_perceptionVector(perceptionVector),
+  m_movementVector(movementVector),
+  m_position(position),
+  m_uuid(getNextUUID())
+{
 }
 
-void Entity::receive_event(Event &e) {
-  // some code
-}
+
 
 void Entity::setPerceptionVector(UssVector &perceptionVector) {
   m_perceptionVector = perceptionVector;

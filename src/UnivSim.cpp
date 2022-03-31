@@ -6,18 +6,6 @@
 #include <UnivSim/entity/Entity.h>
 #include <gtest/gtest.h>
 
-class TestEntity : public Entity {
-public:
-    TestEntity(UssVector &v) : Entity{v} {}
-    
-
-    void test() {
-        std::cout << "TestEntity::test()" << std::endl;
-    }
-    
-};
-
-
 
 int main(int argc, char* argv[]){
 
