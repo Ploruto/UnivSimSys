@@ -3,5 +3,3 @@
 #include <iostream>
 
 //create event deriving from event class
-TEST(EventTest, EventCreation) {
-}

@@ -21,7 +21,7 @@ class EventSource {
 
         
         void emit_event(const EventType &event) {
-            for (auto &subscriber : m_subscribers) {
+            for (auto &[id, subscriber] : m_subscribers) {
                 subscriber->receive_event(event);
             }
         }

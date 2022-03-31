@@ -9,8 +9,6 @@ src/UnivSim.cpp src/utils/math/UssVector.cpp
 src/entity/Entity.cpp src/spatial/SpatialGrid.cpp
 src/spatial/SpatialCell.cpp
 
-
-
 )
 
 # Add an executable with the above sources
