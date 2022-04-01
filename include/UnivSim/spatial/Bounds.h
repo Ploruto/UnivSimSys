@@ -10,6 +10,9 @@ struct Bounds
     Bounds(EntityPoint min, EntityPoint max);
 
     bool contains(EntityPoint point);
+    inline float getXMid() { return (xMin + xMax) / 2; }
+    inline float getYMid() { return (yMin + yMax) / 2; }
+    inline float getZMid() { return (zMin + zMax) / 2; }
     
 };
 
