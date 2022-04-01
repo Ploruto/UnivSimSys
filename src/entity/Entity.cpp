@@ -6,7 +6,6 @@ long long Entity::getNextUUID() {
     return uuid++;
 }
 
-
 Entity::Entity() {
     m_perceptionVector = UssVector();
     m_movementVector = UssVector();

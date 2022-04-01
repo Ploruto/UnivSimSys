@@ -5,7 +5,6 @@
 #include <UnivSim/spatial/AABB.h>
 #include <UnivSim/spatial/Bounds.h>
 
-
 #include <vector>
 
 /*
@@ -25,20 +24,25 @@ struct Octree
     std::vector<Octree*> m_children;
     Octree* m_parent;
     short m_numChildren;
+    
 
     Bounds m_bounds;
 
-    EntityPoint m_entityPoint;
+    EntityPoint* m_entityPoint;
 
-    inline bool isFull() { return m_numChildren == 8; }
-    inline bool isEmpty() { return m_numChildren == 0; }
+    inline bool isFull() { return this->m_numChildren == 8; }
+    inline bool isEmpty() { return this->m_numChildren == 0; }
+    inline bool isLeaf() { return this->m_numChildren == 0 && this->m_entityPoint->getEntity() != nullptr; }
+    inline bool holdsNoPoint() { return this->m_entityPoint->getEntity() == nullptr; }
 
     Octree(Bounds &bounds);
     Octree(float xMin, float yMin, float zMin, float xMax, float yMax, float zMax);
 
-    void insert(EntityPoint point);
+    void insert(EntityPoint* point);
     void insert(EntityPoint* points, int numPoints);
     void insert(std::vector<EntityPoint> points);
+
+    bool find(EntityPoint* point);
 
     
     static short getOctant(EntityPoint point, Bounds bounds);
