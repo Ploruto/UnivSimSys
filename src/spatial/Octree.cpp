@@ -33,7 +33,7 @@ short Octree::getOctant(EntityPoint point, Bounds bounds)
 
 // Get the bounds of an octant based on the bounds of the parent octree.
 // The bounds of the octant will be one eighth of the parent bounds and will have a min or max at the center of the parent's center.
-// The octant will be described by the bitmask.
+// The octant will be described by the bitmask. (The Code below contains switch case statements, which I dislike)
 Bounds Octree::getChildOctantBounds(short octant)
 {
     float xMid = this->m_bounds.getXMid();
@@ -78,8 +78,6 @@ void Octree::fillChildOctant(short octant)
     this->m_numChildren++;
 }
 
-
-
 // check whether the point is in the octree's bounds
 // if it is, check if the current octree has children
 // if it doesn't, set the octree's entity point to the point
@@ -120,6 +118,7 @@ void Octree::insert(EntityPoint* point){
         else
         {
             std::cout << "point out of bounds" << std::endl;
+            return;
         }
     }
 }
