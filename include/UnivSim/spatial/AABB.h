@@ -1,15 +1,15 @@
 #ifndef USimS_spatialAABB
 #define USimS_spatialAABB
-#include <UnivSim/spatial/Point.h>
+#include <UnivSim/spatial/EntityPoint.h>
 
 struct AABB
 {
 private:
-    Point center;
+    EntityPoint center;
     float halfWidth;
 public:
-    AABB(Point center, float halfWidth) : center(center), halfWidth(halfWidth) {}
-    bool contains(Point p) const;
+    AABB(EntityPoint center, float halfWidth) : center(center), halfWidth(halfWidth) {}
+    bool contains(EntityPoint p) const;
     bool intersects(AABB other) const;
 };
 
