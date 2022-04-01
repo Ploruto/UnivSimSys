@@ -1,8 +1,6 @@
 
 #include <iostream>
 #include <UnivSim/utils/math/UssVector.h>
-#include <UnivSim/spatial/SpatialGrid.h>
-#include <UnivSim/utils/math/UssVector.h>
 #include <UnivSim/entity/Entity.h>
 #include <gtest/gtest.h>
 

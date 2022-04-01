@@ -14,7 +14,6 @@ public:
         UP
     };
 
-
 private:
     float x, y, z;
 public:

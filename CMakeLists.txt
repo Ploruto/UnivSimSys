@@ -6,8 +6,7 @@ project (SimUniv)
 # Create a sources variable with a link to all cpp files to compile
 file(GLOB SOURCES true
 src/UnivSim.cpp src/utils/math/UssVector.cpp
-src/entity/Entity.cpp src/spatial/SpatialGrid.cpp
-src/spatial/SpatialCell.cpp
+src/entity/Entity.cpp
 
 )
 
