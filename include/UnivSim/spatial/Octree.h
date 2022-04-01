@@ -49,6 +49,8 @@ struct Octree
     Bounds getChildOctantBounds(short octant);
     void fillChildOctant(short octant);
 
+    
+
 
 };
 
