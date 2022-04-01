@@ -5,10 +5,11 @@ project (SimUniv)
 
 # Create a sources variable with a link to all cpp files to compile
 file(GLOB SOURCES true utils/math/UssVectorTest.cpp
- spatial/SpatialCellTest.cpp
-spatial/SpatialGridTest.cpp
-event/EventManagerTest.cpp event/EventTest.cpp event/TimedEvent.cpp
-entity/Entity.cpp entity/EntityTest.cpp
+event/EventTest.cpp
+entity/EntityTest.cpp
+spatial/EntityPointTest.cpp spatial/AABBTest.cpp
+
+
   
   )
 

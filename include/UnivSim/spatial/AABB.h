@@ -5,12 +5,16 @@
 struct AABB
 {
 private:
-    EntityPoint center;
-    float halfWidth;
+    EntityPoint m_center;
+    float m_halfWidth;
+
 public:
-    AABB(EntityPoint center, float halfWidth) : center(center), halfWidth(halfWidth) {}
+    AABB(EntityPoint center, float halfWidth);
     bool contains(EntityPoint p) const;
     bool intersects(AABB other) const;
+
+    EntityPoint getCenter() const;
+    float getHalfWidth() const;
 };
 
 

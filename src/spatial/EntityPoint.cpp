@@ -6,7 +6,7 @@ EntityPoint::EntityPoint(Entity* entity, float x, float y, float z) : UssVector(
     m_entity = entity;
 }
 
-EntityPoint::EntityPoint(Entity* entity, const UssVector &point) : UssVector(point)
+EntityPoint::EntityPoint(Entity* entity, UssVector &point) : UssVector(point)
 {
     m_entity = entity;
 }
@@ -16,7 +16,7 @@ EntityPoint::EntityPoint(float x, float y, float z) : UssVector(x, y, z)
     m_entity = nullptr;
 }
 
-EntityPoint::EntityPoint(const UssVector &point) : UssVector(point)
+EntityPoint::EntityPoint(UssVector &point) : UssVector(point)
 {
     m_entity = nullptr;
 }

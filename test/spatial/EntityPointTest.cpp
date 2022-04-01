@@ -1,7 +1,8 @@
 #include <UnivSim/spatial/EntityPoint.h>
 #include <UnivSim/entity/Entity.h>
+#include <gtest/gtest.h>
 
-TEST(EntityPointTest, EntityPoint)
+TEST(EntityPointTest, EntityPoint123)
 {
     EntityPoint point(nullptr, 1.0f, 2.0f, 3.0f);
     EXPECT_EQ(point.getX(), 1.0f);
