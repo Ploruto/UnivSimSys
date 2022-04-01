@@ -13,6 +13,7 @@ public:
     EntityPoint(Entity* entity);
     EntityPoint(float x, float y, float z); // use nullptr for entity
     EntityPoint(UssVector &v); // use nullptr for entity
+    EntityPoint();
 
     Entity* getEntity();
 };
