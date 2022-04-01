@@ -1,6 +1,7 @@
 #ifndef USimS_eventReceiver
 #define USimS_eventReceiver
 
+//idea found with the help of https://github.com/deqyra 
 template <class EventType>
 class EventReceiver {
 private:
