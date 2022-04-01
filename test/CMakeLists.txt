@@ -8,6 +8,7 @@ file(GLOB SOURCES true utils/math/UssVectorTest.cpp
 event/EventTest.cpp
 entity/EntityTest.cpp
 spatial/EntityPointTest.cpp spatial/AABBTest.cpp
+spatial/OctreeTest.cpp
 
 
   
