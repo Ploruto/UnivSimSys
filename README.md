@@ -7,7 +7,7 @@
      - which contain a way of receiving information from other places of the Simulation to communicate (**Events**) (and reacting to those)
      - (a way of perceiving the Entity's surrounding) (this may correspond to [Spatial](Spatial))
 #### Spatial: 
-  - A **spatial data structure** that allows for comparing positions and **collision testing** in a **continously chaning enviroment** (Octatrees or grid, maybe)
+  - A **spatial data structure** that allows for comparing positions and **collision testing** in a **continously chaning enviroment** (Octrees or grid, maybe)
     - so that actions/reactions can be taken when specific things (**Events**) accour (like collision)
     - some kind of terrain information, which should not be fixed and changeable (a 3D representation of the env.)
 #### Communication:
