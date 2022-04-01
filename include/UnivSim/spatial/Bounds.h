@@ -13,6 +13,12 @@ struct Bounds
     inline float getXMid() { return (xMin + xMax) / 2; }
     inline float getYMid() { return (yMin + yMax) / 2; }
     inline float getZMid() { return (zMin + zMax) / 2; }
+    inline float getXMin() { return xMin; }
+    inline float getYMin() { return yMin; }
+    inline float getZMin() { return zMin; }
+    inline float getXMax() { return xMax; }
+    inline float getYMax() { return yMax; }
+    inline float getZMax() { return zMax; }
     
 };
 

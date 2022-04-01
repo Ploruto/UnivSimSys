@@ -23,6 +23,7 @@
 struct Octree
 {
     std::vector<Octree*> m_children;
+    Octree* m_parent;
     short m_numChildren;
 
     Bounds m_bounds;
@@ -38,8 +39,12 @@ struct Octree
     void insert(EntityPoint point);
     void insert(EntityPoint* points, int numPoints);
     void insert(std::vector<EntityPoint> points);
+
     
     static short getOctant(EntityPoint point, Bounds bounds);
+    Bounds getChildOctantBounds(short octant);
+    void fillChildOctant(short octant);
+
 
 };
 
