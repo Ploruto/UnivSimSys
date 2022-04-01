@@ -4,20 +4,20 @@
 
 struct UssVector {
 
-    public:
-    enum DIRECTION{
+public:
+    enum DIRECTION {
         RIGHT,
         LEFT,
         FORWARD,
         BACKWARD,
         DOWN,
         UP
-    };    
+    };
 
 
-    private:
-        float x, y, z;
-    public:
+private:
+    float x, y, z;
+public:
     UssVector(float x, float y, float z);
     UssVector();
 

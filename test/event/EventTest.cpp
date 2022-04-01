@@ -5,21 +5,21 @@
 
 class EventTest
 {
-    private:
-        short m_testShort;
-    public:
-        EventTest(short testShort): m_testShort(testShort) {}
-    
-        short getTestShort() const {
-            return m_testShort;
-        }
+private:
+    short m_testShort;
+public:
+    EventTest(short testShort): m_testShort(testShort) {}
+
+    short getTestShort() const {
+        return m_testShort;
+    }
 };
 
 class NumberLover : public EventReceiver<EventTest> {
-    public:
-        void receive_event(const EventTest &event) override {
-            //std::cout << "NumberLover received event with testShort: " << event.getTestShort() << std::endl;
-        }
+public:
+    void receive_event(const EventTest &event) override {
+        //std::cout << "NumberLover received event with testShort: " << event.getTestShort() << std::endl;
+    }
 };
 
 TEST(EventTest, EventCreation) {

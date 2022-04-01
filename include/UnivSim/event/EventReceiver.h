@@ -3,23 +3,23 @@
 
 template <class EventType>
 class EventReceiver {
-    private:
-        long long m_uuid;
-    
-    private:
-        static long long getNextUUID() {
-            static long long uuid{0};
-            return uuid++;
-        }
+private:
+    long long m_uuid;
 
-    public:
-        virtual void receive_event(const EventType &event) = 0;
+private:
+    static long long getNextUUID() {
+        static long long uuid{0};
+        return uuid++;
+    }
 
-        EventReceiver() : m_uuid(getNextUUID()) {}
+public:
+    virtual void receive_event(const EventType &event) = 0;
 
-        long long getUUID() const {
-            return m_uuid;
-        }
+    EventReceiver() : m_uuid(getNextUUID()) {}
+
+    long long getUUID() const {
+        return m_uuid;
+    }
 };
 
 #endif
