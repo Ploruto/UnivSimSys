@@ -29,10 +29,10 @@ struct Octree
 
     EntityPoint m_entityPoint;
 
-    inline bool isFull() { return numChildren == 8; }
-    inline bool isEmpty() { return numChildren == 0; }
+    inline bool isFull() { return m_numChildren == 8; }
+    inline bool isEmpty() { return m_numChildren == 0; }
 
-    Octree(Bounds bounds);
+    Octree(Bounds &bounds);
     Octree(float xMin, float yMin, float zMin, float xMax, float yMax, float zMax);
 
     void insert(EntityPoint point);
@@ -40,8 +40,8 @@ struct Octree
     void insert(std::vector<EntityPoint> points);
     
     static short getOctant(EntityPoint point, Bounds bounds);
-    
-}
+
+};
 
 
 
