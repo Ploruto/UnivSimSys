@@ -16,5 +16,7 @@ TEST(AABBTestOperations, aabbTests)
     AABB aabb3 = AABB(center2, 0.2f);
     
     EXPECT_EQ(aabb.intersects(aabb3), false);
+
+    EXPECT_EQ(aabb.contains(center2), false);
     
 }

@@ -7,6 +7,7 @@ project (SimUniv)
 file(GLOB SOURCES true
 src/UnivSim.cpp src/utils/math/UssVector.cpp
 src/entity/Entity.cpp src/spatial/AABB.cpp src/spatial/EntityPoint.cpp
+src/spatial/Bounds.cpp src/spatial/Octree.cpp
 
 )
 
