@@ -18,14 +18,17 @@ public:
 class NumberLover : public EventReceiver<EventTest> {
 public:
     void receive_event(const EventTest &event) override {
-        std::cout << "NumberLover received event with testShort: " << event.getTestShort() << std::endl;
+        //std::cout << "NumberLover received event with testShort: " << event.getTestShort() << std::endl;
     }
 };
 
 TEST(EventTest, EventCreation) {
     NumberLover numberLover;
+    NumberLover numberLover2;
+
     EventSource<EventTest> eventSource;
     eventSource.subscribe(&numberLover);
+    eventSource.subscribe(&numberLover2);
     EventTest event(5);
     eventSource.emit_event(event);
 
