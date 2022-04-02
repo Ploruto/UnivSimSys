@@ -92,13 +92,15 @@ void Octree::insert(Entity* point) {
         queuedPoints.pop();
         if(this->m_bounds.contains(point))
         {
-            if(this->isEmpty() && this->holdsNoPoint())
+            if(this->isEmpty() && !this->holdsPoint())
             {
                 std::cout << "inserting point" << std::endl;
                 this->m_entity = point;
+                return;
             }
             else
             {
+                std::cout << "inserting point in child octant" << std::endl;
                 short octant = getOctant(point, this->m_bounds);
                 if(this->m_children[octant] == nullptr)
                 {
@@ -108,7 +110,7 @@ void Octree::insert(Entity* point) {
                 // the goal is to make this land in the isEmpty && holdNoPoint branch
                 this->m_children[octant]->insert(point);
 
-                if(!this->holdsNoPoint())
+                if(this->holdsPoint())
                 {
                     queuedPoints.push(this->m_entity);
                     m_entity = nullptr;

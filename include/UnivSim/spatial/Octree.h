@@ -39,8 +39,8 @@ struct Octree
     inline bool isLeaf() {
         return this->m_numChildren == 0 && this->m_entity != nullptr;
     }
-    inline bool holdsNoPoint() {
-        return this->m_entity == nullptr;
+    inline bool holdsPoint() {
+        return this->m_entity != nullptr;
     }
 
     Octree(Bounds &bounds);
