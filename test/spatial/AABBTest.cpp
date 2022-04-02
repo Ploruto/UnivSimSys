@@ -37,16 +37,26 @@ TEST(AABBTestOperations, aabbTestsIntersects)
 
 
     Entity* entity = new Entity();
-    entity->setPosition(UssVector(1.0f, 1.0f, 1.0f));
-    AABB* aabb = new AABB(entity, 1.0f);
+    entity->setPosition(1.0f, 1.0f, 1.0f);
+    AABB* aabb = new AABB(entity, 0.6f);
 
     //create second entity at position (2,2,2)
     //create second AABB with halfWidth 0.5
 
     Entity* entity2 = new Entity();
-    entity2->setPosition(UssVector(2.0f, 2.0f, 2.0f));
+    entity2->setPosition(2.0f, 2.0f, 2.0f);
     AABB* aabb2 = new AABB(entity2, 0.5f);
 
     EXPECT_EQ(aabb->intersects(*aabb2), true); // should intersect
+
+    aabb->setHalfWidth(0.4f);
+
+    EXPECT_EQ(aabb->intersects(*aabb2), false); // should not intersect
+
+    // chaning position of entity 1 to (2,2,2), this automatically changes the AABB
+    entity->setPosition(2.0f, 2.0f, 2.0f);
+
+    EXPECT_EQ(aabb->intersects(*aabb2), true); // should intersect
+    
 
 }

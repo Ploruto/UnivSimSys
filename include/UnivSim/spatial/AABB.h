@@ -21,6 +21,7 @@ public:
 
     UssVector getCenter() const;
     float getHalfWidth() const;
+    void setHalfWidth(float halfWidth);
 };
 
 

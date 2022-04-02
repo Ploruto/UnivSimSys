@@ -12,6 +12,10 @@ Entity* AABB::getEntity() const {
     return m_entity;
 }
 
+void AABB::setHalfWidth(float halfWidth) {
+    m_halfWidth = halfWidth;
+}
+
 float AABB::getHalfWidth() const {
     return m_halfWidth;
 }

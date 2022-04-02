@@ -43,6 +43,10 @@ void Entity::setPosition(UssVector &position) {
     m_position = position;
 }
 
+void Entity::setPosition(float x, float y, float z) {
+    m_position = UssVector(x, y, z);
+}
+
 UssVector Entity::getPerceptionVector() const {
     return m_perceptionVector;
 }
