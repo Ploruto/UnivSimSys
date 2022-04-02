@@ -1,7 +1,7 @@
 #ifndef USimS_spatialOctree
 #define USimS_spatialOctree
 
-#include <UnivSim/spatial/EntityPoint.h>
+#include <UnivSim/entity/Entity.h>
 #include <UnivSim/spatial/AABB.h>
 #include <UnivSim/spatial/Bounds.h>
 
@@ -24,32 +24,40 @@ struct Octree
     std::vector<Octree*> m_children;
     Octree* m_parent;
     short m_numChildren;
-    
+
 
     Bounds m_bounds;
 
-    EntityPoint* m_entityPoint;
+    Entity* m_entity;
 
-    inline bool isFull() { return this->m_numChildren == 8; }
-    inline bool isEmpty() { return this->m_numChildren == 0; }
-    inline bool isLeaf() { return this->m_numChildren == 0 && this->m_entityPoint->getEntity() != nullptr; }
-    inline bool holdsNoPoint() { return this->m_entityPoint->getEntity() == nullptr; }
+    inline bool isFull() {
+        return this->m_numChildren == 8;
+    }
+    inline bool isEmpty() {
+        return this->m_numChildren == 0;
+    }
+    inline bool isLeaf() {
+        return this->m_numChildren == 0 && this->m_entity != nullptr;
+    }
+    inline bool holdsNoPoint() {
+        return this->m_entity == nullptr;
+    }
 
     Octree(Bounds &bounds);
     Octree(float xMin, float yMin, float zMin, float xMax, float yMax, float zMax);
 
-    void insert(EntityPoint* point);
-    void insert(EntityPoint* points, int numPoints);
-    void insert(std::vector<EntityPoint> points);
+    void insert(Entity* point);
+    void insert(Entity* points, int numPoints);
+    void insert(std::vector<Entity *> points);
 
-    bool find(EntityPoint* point);
+    bool find(Entity* point);
 
-    
-    static short getOctant(EntityPoint point, Bounds bounds);
+
+    static short getOctant(Entity* point, Bounds bounds);
     Bounds getChildOctantBounds(short octant);
     void fillChildOctant(short octant);
 
-    
+
 
 
 };

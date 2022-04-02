@@ -1,31 +1,35 @@
 #include <UnivSim/spatial/AABB.h>
-#include <UnivSim/spatial/EntityPoint.h>
+#include <UnivSim/entity/Entity.h>
 
 
-AABB::AABB(EntityPoint center, float halfWidth): m_center(center), m_halfWidth(halfWidth) {}
+AABB::AABB(Entity* entity, float halfWidth): m_entity(entity), m_halfWidth(halfWidth) {}
 
-EntityPoint AABB::getCenter() const {
-    return m_center;
+UssVector AABB::getCenter() const {
+    return m_entity->getPosition();
+}
+
+Entity* AABB::getEntity() const {
+    return m_entity;
 }
 
 float AABB::getHalfWidth() const {
     return m_halfWidth;
 }
 
-bool AABB::contains(EntityPoint p) const
+bool AABB::contains(Entity* p) const
 {
-    return (p.getX() >= m_center.getX() - m_halfWidth && p.getX() <= m_center.getX() + m_halfWidth &&
-            p.getY() >= m_center.getY() - m_halfWidth && p.getY() <= m_center.getY() + m_halfWidth &&
-            p.getZ() >= m_center.getZ() - m_halfWidth && p.getZ() <= m_center.getZ() + m_halfWidth);
+    return (p->getPosition().getX() >= this->getCenter().getX() - m_halfWidth && p->getPosition().getX() <= this->getCenter().getX() + m_halfWidth &&
+            p->getPosition().getY() >= this->getCenter().getY() - m_halfWidth && p->getPosition().getY() <= this->getCenter().getY() + m_halfWidth &&
+            p->getPosition().getZ() >= this->getCenter().getZ() - m_halfWidth && p->getPosition().getZ() <= this->getCenter().getZ() + m_halfWidth);
 }
 
 bool AABB::intersects(AABB other) const
 {
-    return (m_center.getX() - m_halfWidth <= other.getCenter().getX() + other.getHalfWidth() &&
-            m_center.getX() + m_halfWidth >= other.getCenter().getX() - other.getHalfWidth() &&
-            m_center.getY() - m_halfWidth <= other.getCenter().getY() + other.getHalfWidth() &&
-            m_center.getY() + m_halfWidth >= other.getCenter().getY() - other.getHalfWidth() &&
-            m_center.getZ() - m_halfWidth <= other.getCenter().getZ() + other.getHalfWidth() &&
-            m_center.getZ() + m_halfWidth >= other.getCenter().getZ() - other.getHalfWidth());
+    return (this->getCenter().getX() - m_halfWidth <= other.getCenter().getX() + other.getHalfWidth() &&
+            this->getCenter().getX() + m_halfWidth >= other.getCenter().getX() - other.getHalfWidth() &&
+            this->getCenter().getY() - m_halfWidth <= other.getCenter().getY() + other.getHalfWidth() &&
+            this->getCenter().getY() + m_halfWidth >= other.getCenter().getY() - other.getHalfWidth() &&
+            this->getCenter().getZ() - m_halfWidth <= other.getCenter().getZ() + other.getHalfWidth() &&
+            this->getCenter().getZ() + m_halfWidth >= other.getCenter().getZ() - other.getHalfWidth());
 }
 

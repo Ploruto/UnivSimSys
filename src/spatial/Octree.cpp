@@ -7,7 +7,7 @@ Octree::Octree(Bounds &bounds): m_bounds(bounds)
     m_parent = nullptr;
     m_numChildren = 0;
     m_children.resize(8);
-    m_entityPoint = new EntityPoint();
+    m_entity = nullptr;
 }
 
 Octree::Octree(float xMin, float yMin, float zMin, float xMax, float yMax, float zMax): m_bounds(xMin, yMin, zMin, xMax, yMax, zMax)
@@ -15,18 +15,18 @@ Octree::Octree(float xMin, float yMin, float zMin, float xMax, float yMax, float
     m_parent = nullptr;
     m_numChildren = 0;
     m_children.resize(8);
-    m_entityPoint = new EntityPoint();
+    m_entity = nullptr;
 }
 
 // Get the octant that the point belongs to.
-short Octree::getOctant(EntityPoint point, Bounds bounds)
+short Octree::getOctant(Entity* point, Bounds bounds)
 {
     short octant = 0b00000;
-    if(point.getX() > bounds.getXMid())
+    if(point->getPosition().getX() > bounds.getXMid())
         octant |= 0b00001;
-    if(point.getY() > bounds.getYMid())
+    if(point->getPosition().getY() > bounds.getYMid())
         octant |= 0b00010;
-    if(point.getZ() > bounds.getZMid())
+    if(point->getPosition().getZ() > bounds.getZMid())
         octant |= 0b00100;
     return octant;
 }
@@ -81,25 +81,25 @@ void Octree::fillChildOctant(short octant)
 // check whether the point is in the octree's bounds
 // if it is, check if the current octree has children
 // if it doesn't, set the octree's entity point to the point
-// if it does, 
-void Octree::insert(EntityPoint* point){
-    static std::queue<EntityPoint *> queuedPoints;
+// if it does,
+void Octree::insert(Entity* point) {
+    static std::queue<Entity *> queuedPoints;
 
     queuedPoints.push(point);
     while(!queuedPoints.empty())
     {
-        EntityPoint* point = queuedPoints.front();
+        Entity* point = queuedPoints.front();
         queuedPoints.pop();
-        if(this->m_bounds.contains(*point))
+        if(this->m_bounds.contains(point))
         {
             if(this->isEmpty() && this->holdsNoPoint())
             {
                 std::cout << "inserting point" << std::endl;
-                this->m_entityPoint = point;
+                this->m_entity = point;
             }
             else
             {
-                short octant = getOctant(*point, this->m_bounds);
+                short octant = getOctant(point, this->m_bounds);
                 if(this->m_children[octant] == nullptr)
                 {
                     this->fillChildOctant(octant);
@@ -110,8 +110,8 @@ void Octree::insert(EntityPoint* point){
 
                 if(!this->holdsNoPoint())
                 {
-                    queuedPoints.push(this->m_entityPoint);
-                    m_entityPoint = new EntityPoint();
+                    queuedPoints.push(this->m_entity);
+                    m_entity = nullptr;
                 }
             }
         }
@@ -124,17 +124,17 @@ void Octree::insert(EntityPoint* point){
 }
 
 
-bool Octree::find(EntityPoint* point)
+bool Octree::find(Entity* point)
 {
-    if(this->m_bounds.contains(*point))
+    if(this->m_bounds.contains(point))
     {
-        if(this->isEmpty() && this->m_entityPoint == point)
+        if(this->isEmpty() && this->m_entity == point)
         {
-            return this->m_entityPoint;
+            return this->m_entity;
         }
         else
         {
-            short octant = getOctant(*point, this->m_bounds);
+            short octant = getOctant(point, this->m_bounds);
             if(this->m_children[octant] == nullptr)
             {
                 return false;

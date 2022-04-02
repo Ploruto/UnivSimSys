@@ -1,15 +1,18 @@
 #ifndef USimS_spatialBounds
 #define USimS_spatialBounds
-#include <UnivSim/spatial/EntityPoint.h>
+#include <UnivSim/entity/Entity.h>
+#include <UnivSim/utils/math/UssVector.h>
 
 
 struct Bounds
 {
     float xMin, yMin, zMin, xMax, yMax, zMax;
     Bounds(float xMin, float yMin, float zMin, float xMax, float yMax, float zMax);
-    Bounds(EntityPoint min, EntityPoint max);
+    Bounds(UssVector min, UssVector max);
+    Bounds(Entity* min, Entity* max);
 
-    bool contains(EntityPoint point);
+    bool contains(Entity* point);
+    bool contains(UssVector &point);
     inline float getXMid() { return (xMin + xMax) / 2; }
     inline float getYMid() { return (yMin + yMax) / 2; }
     inline float getZMid() { return (zMin + zMax) / 2; }
