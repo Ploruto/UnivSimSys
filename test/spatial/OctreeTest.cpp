@@ -32,8 +32,9 @@ TEST(OctreeTest, octreeTestsInsertion)
     // create a second entity and insert it
     Entity* entity2 = new Entity();
     entity2->setPosition(0.5f, 0.5, 0.5);
-    octree->insert(entity2);
 
-    EXPECT_EQ(octree->m_entity, nullptr);
+    EXPECT_FALSE(octree->insert(entity2)); //inserting this shouldn't work!!! because there is a point with the same position
+
+
 }
 

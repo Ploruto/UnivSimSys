@@ -82,7 +82,7 @@ void Octree::fillChildOctant(short octant)
 // if it is, check if the current octree has children
 // if it doesn't, set the octree's entity point to the point
 // if it does,
-void Octree::insert(Entity* point) {
+bool Octree::insert(Entity* point) {
     static std::queue<Entity *> queuedPoints;
 
     queuedPoints.push(point);
@@ -96,10 +96,11 @@ void Octree::insert(Entity* point) {
             {
                 std::cout << "inserting point" << std::endl;
                 this->m_entity = point;
-                return;
+                return true;
             }
             else
             {
+                if(this->m_entity->getPosition() == point->getPosition()) return false;
                 std::cout << "inserting point in child octant" << std::endl;
                 short octant = getOctant(point, this->m_bounds);
                 if(this->m_children[octant] == nullptr)
@@ -120,7 +121,7 @@ void Octree::insert(Entity* point) {
         else
         {
             std::cout << "point out of bounds" << std::endl;
-            return;
+            return false;
         }
     }
 }
