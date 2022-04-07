@@ -11,7 +11,7 @@ Entity::Entity() {
     m_movementVector = UssVector();
     m_position = UssVector();
     m_uuid = getNextUUID();
-    m_aabb = new AABB(this, 0.0f);
+    m_aabb = new AABB(this, 0.0f, 0.0f, 0.0f);
 }
 
 Entity::Entity(UssVector &position, UssVector &perceptionVector, UssVector &movementVector):

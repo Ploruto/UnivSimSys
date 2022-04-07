@@ -2,61 +2,37 @@
 #include <UnivSim/entity/Entity.h>
 #include <gtest/gtest.h>
 
-TEST(AABBTestOperations, aabbTestsGetEntity)
-{
-    Entity* entity = new Entity();
-    AABB* aabb = new AABB(entity, 1.0f);
-    EXPECT_EQ(aabb->getEntity(), entity);
-}
-TEST(AABBTestOperations, aabbTestsGetHalfWidth)
-{
-    Entity* entity = new Entity();
-    AABB* aabb = new AABB(entity, 1.0f);
-    EXPECT_EQ(aabb->getHalfWidth(), 1.0f);
-}
-TEST(AABBTestOperations, aabbTestsGetCenter)
-{
-    Entity* entity = new Entity();
-    AABB* aabb = new AABB(entity, 1.0f);
-    EXPECT_EQ(aabb->getCenter(), UssVector());
-}
-TEST(AABBTestOperations, aabbTestsContains)
-{
-    Entity* entity = new Entity();
-    AABB* aabb = new AABB(entity, 1.0f);
-    EXPECT_EQ(aabb->contains(entity), true); // (0,0,0) is inside the AABB
 
-    UssVector position(1.5f, 1.5f, 1.5f);
-    Entity* entity2 = new Entity(position, position, position);
-    EXPECT_EQ(aabb->contains(entity2), false); // should not be contained
-}
-TEST(AABBTestOperations, aabbTestsIntersects)
+// write Tests for every method of AABB
+TEST(AABBTest, AABB_Constructor)
 {
-    // create entity at position (1,1,1)
-    // create AABB with halfWidth 1
-
-
     Entity* entity = new Entity();
-    entity->setPosition(1.0f, 1.0f, 1.0f);
-    AABB* aabb = new AABB(entity, 0.6f);
+    AABB* aabb = new AABB(entity, 1.0f, 1.0f, 1.0f);
+    EXPECT_EQ(entity, aabb->getEntity());
+    EXPECT_EQ(1, aabb->getHalfWidthX());
+    EXPECT_EQ(1, aabb->getHalfWidthY());
+    EXPECT_EQ(1, aabb->getHalfWidthZ());
+}
 
-    //create second entity at position (2,2,2)
-    //create second AABB with halfWidth 0.5
+TEST(AABBTest, AABB_Contains)
+{
+    Entity* entity = new Entity();
+    AABB* aabb = new AABB(entity, 1.0f, 1.0f, 1.0f);
+    Entity* entity2 = new Entity();
+    EXPECT_TRUE(aabb->contains(entity));
+    EXPECT_FALSE(aabb->contains(entity2));
+}
+
+TEST(AABBTest, AABB_Intersects)
+{
+    Entity* entity = new Entity();
+    AABB aabb(entity, 1.0f, 1.0f, 1.0f);
 
     Entity* entity2 = new Entity();
     entity2->setPosition(2.0f, 2.0f, 2.0f);
-    AABB* aabb2 = new AABB(entity2, 0.5f);
-
-    EXPECT_EQ(aabb->intersects(*aabb2), true); // should intersect
-
-    aabb->setHalfWidth(0.4f);
-
-    EXPECT_EQ(aabb->intersects(*aabb2), false); // should not intersect
-
-    // chaning position of entity 1 to (2,2,2), this automatically changes the AABB
-    entity->setPosition(2.0f, 2.0f, 2.0f);
-
-    EXPECT_EQ(aabb->intersects(*aabb2), true); // should intersect
-    
-
+    AABB other(entity2, 0.25f, 0.25f, 0.25f);
+    EXPECT_TRUE(aabb.intersects(other));
+    EXPECT_FALSE(aabb.intersects(entity2));
 }
+
+
