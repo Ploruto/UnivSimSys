@@ -46,9 +46,10 @@ struct Octree
     Octree(Bounds &bounds);
     Octree(float xMin, float yMin, float zMin, float xMax, float yMax, float zMax);
 
-    void insert(Entity* point);
-    void insert(Entity* points, int numPoints);
-    void insert(std::vector<Entity *> points);
+    // when insertion is not possible, because there already exists an entity with the same position, return false
+    bool insert(Entity* point);
+    bool insert(Entity* points, int numPoints);
+    bool insert(std::vector<Entity *> points);
 
     bool find(Entity* point);
 
